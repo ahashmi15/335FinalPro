@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style.css">
+    <title>Task Move</title>
+</head>
+
+<body>
+    <h1>LET'S GET THINGS DONE</h1>
+
+    <form action="/load-tasks" method="POST">
+
+        
+    <fieldset>
+            
+        <fieldset>
+        <h2>What is your Objective?</h2>
+
+        <!-- Objective 1 (required) -->
+        <input type="text" id="obj1" name="obj1" required>
+
+        <!-- Hidden extra objectives -->
+        <div id="extraObjectives">
+
+            <input type="text" id="obj2" name="obj2" placeholder="Additional objective" class="hidden">
+            <input type="text" id="obj3" name="obj3" placeholder="Additional objective" class="hidden">
+            <input type="text" id="obj4" name="obj4" placeholder="Additional objective" class="hidden">
+            <input type="text" id="obj5" name="obj5" placeholder="Additional objective" class="hidden">
+            <input type="text" id="obj6" name="obj6" placeholder="Additional objective" class="hidden">
+            <input type="text" id="obj7" name="obj7" placeholder="Additional objective" class="hidden">
+            <input type="text" id="obj8" name="obj8" placeholder="Additional objective" class="hidden">
+            <input type="text" id="obj9" name="obj9" placeholder="Additional objective" class="hidden">
+            <input type="text" id="obj10" name="obj10" placeholder="Additional objective" class="hidden">
+
+        </div>
+
+        <button type="button" id="addObjBtn">+ Add another objective</button>
+        </fieldset>
+            
+            
+            
+            
+            
+            
+            
+            
+        <h2>How long do you plan on chasing your objective?</h2>
+
+        <label>Hours:</label>
+        <input type="number" id="hours" name="hours" min="0" max="24" required>
+
+        <label>Minutes:</label>
+        <input type="number" id="minutes" name="minutes" min="0" max="59" required>
+            
+            
+            
+            
+            
+        <h2>What day do you want to schedule the chase for?</h2><input type="text" id="date" name="date">
+        <h2>Enter a name for this chase:</h2><input type="text" id="title" name="title">
+    </fieldset>
+
+
+        <br>
+        <!-- Submit Button -->
+        <button type="submit">Add Task</button>
+    
+    </form>
+
+<script>
+    document.getElementById("addObjBtn").addEventListener("click", function () {
+
+        // Get all hidden objective fields
+        const hiddenFields = document.querySelectorAll("#extraObjectives .hidden");
+
+        if (hiddenFields.length > 0) {
+            // Reveal the first hidden one
+            hiddenFields[0].classList.remove("hidden");
+        } else {
+            alert("You've reached the maximum number of objectives (10).");
+        }
+    });
+</script>
+
+
+</body>
+
+
+
+
+
+
+
+
+</html>

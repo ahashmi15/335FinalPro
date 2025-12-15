@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style.css">
+    <title>Your Days</title>
+</head>
+
+
+<body>
+    <h1>Your Days</h1>
+    <hr>
+
+    <% if (dates.length === 0) { %>
+        <p>No scheduled days yet. Add a task to begin.</p>
+    <% } else { %>
+
+        <div class="carousel">
+            <% dates.forEach(date => { %>
+                <a href="/tasks/<%= date %>">
+                    <div class="day-card"><%= date %></div>
+                </a>
+            <% }); %>
+        </div>
+
+    <% } %>
+
+    <a class="back-btn" href="/">← Add Another Task</a>
+
+
+
+</body>
+
+
+
+
+
+</html>

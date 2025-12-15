@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style.css">
+    <title>Today</title>
+</head>
+
+
+<body>
+
+<h1>Tasks for <%= date %></h1>
+<hr>
+
+<div class="carousel">
+    <% tasks.forEach(task => { %>
+
+        <a href="/task/<%= task._id %>" class="task-card">
+
+            <h3><%= task.title %></h3>
+
+            <p><strong>Duration:</strong> 
+                <%= task.hours %>h 
+                <%= task.minutes %>m
+            </p>
+
+            <% if (task.objectives && task.objectives.length > 0) { %>
+                <ul>
+                    <% task.objectives.forEach(obj => { %>
+                        <li><%= obj %></li>
+                    <% }) %>
+                </ul>
+            <% } %>
+
+        </a>
+
+    <% }) %>
+</div>
+
+
+<a href="/list-days" class="back-btn">← Back to Days</a>
+
+</body>
+</html>

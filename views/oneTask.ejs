@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style.css">
+    <title><%= task.title %></title>
+</head>
+
+<body>
+
+<h1><%= task.title %></h1>
+
+<div class="task-container">
+
+    <!-- LEFT COLUMN -->
+    <div class="left-box">
+        <h2>Objectives</h2>
+        <div class="objectives-list">
+            <% task.objectives.forEach((obj, index) => { %>
+                <div class="objective-item <%= index === 0 ? 'current-objective' : '' %>">
+                    <%= obj %>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+
+
+    <!-- CENTER COLUMN -->
+    <div class="center-box">
+        <h2>Timer</h2>
+        <div id="timer" class="timer-display"></div>
+    </div>
+
+
+    <!-- RIGHT COLUMN -->
+    <div class="right-box">
+        <h2>Current Objective</h2>
+
+        <div id="currentObjective" class="current-text">
+            <%= task.objectives[0] %>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- QUOTE API AREA -->
+<div id="quoteBox">Loading motivational quote...</div>
+
+
+<script>
+    const hours = parseInt(`<%= task.hours %>`, 10);
+    const minutes = parseInt(`<%= task.minutes %>`, 10);
+
+    window.taskDurationSeconds = (hours * 3600) + (minutes * 60);
+</script>
+
+<script src="/oneTask.js"></script>
+
+</body>
+</html>
