@@ -71,24 +71,32 @@
 
 <!-- TIMER END POPUP -->
 <div id="timeUpModal" class="modal hidden">
-    <div class="modal-content">
+  <div class="focus-modal-content">
 
-        <h2>Allotted Time Is Over</h2>
+    <h2 class="focus-modal-title">Allotted Time Is Over</h2>
 
-        <form action="/task/<%= task._id %>/complete" method="POST">
-            <button type="submit" class="good-btn">Mark as Complete</button>
-        </form>
+    <form action="/task/<%= task._id %>/complete" method="POST">
+      <button type="submit"
+              class="focus-popup-btn focus-popup-complete">
+        Mark as Complete
+      </button>
+    </form>
 
-        <form action="/task/<%= task._id %>/fail" method="POST">
-            <button type="submit" class="bad-btn">Move On (Fail)</button>
-        </form>
+    <form action="/task/<%= task._id %>/fail" method="POST">
+      <button type="submit"
+              class="focus-popup-btn focus-popup-fail">
+        Move On (Fail)
+      </button>
+    </form>
 
-        <button id="addTimeBtn" class="neutral-btn">
-            Add More Time
-        </button>
+    <button id="addTimeBtn"
+            class="focus-popup-btn focus-popup-add">
+      Add More Time
+    </button>
 
-    </div>
+  </div>
 </div>
+
 
 </body>
 </html>

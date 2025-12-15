@@ -977,4 +977,79 @@
   transform: scale(0.96);
 }
 
+/* =============================
+   FOCUS POPUP – APP THEME
+============================= */
+
+.focus-modal-content {
+  background: rgba(20, 20, 38, 0.95);
+  backdrop-filter: blur(18px);
+  border-radius: 18px;
+  padding: 26px 24px;
+  width: 320px;
+
+  box-shadow: 0 0 40px rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: white;
+}
+
+.focus-modal-title {
+  margin: 0 0 18px;
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-align: center;
+
+  background: linear-gradient(90deg, #ff2d55, #7c3aed, #00d4ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Shared popup button base */
+.focus-popup-btn {
+  width: 100%;
+  padding: 10px 14px;
+  margin-top: 10px;
+
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.22);
+
+  background: rgba(255,255,255,0.08);
+  color: white;
+
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+
+  backdrop-filter: blur(10px);
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+/* Hover effects ONLY introduce color */
+.focus-popup-btn:hover {
+  transform: scale(1.05);
+}
+
+/* GREEN on hover */
+.focus-popup-complete:hover {
+  background: rgba(76, 175, 80, 0.25);
+  box-shadow: 0 0 18px rgba(76, 175, 80, 0.45);
+}
+
+/* RED on hover */
+.focus-popup-fail:hover {
+  background: rgba(231, 76, 60, 0.25);
+  box-shadow: 0 0 18px rgba(231, 76, 60, 0.45);
+}
+
+/* YELLOW on hover */
+.focus-popup-add:hover {
+  background: rgba(255, 216, 107, 0.28);
+  box-shadow: 0 0 18px rgba(255, 216, 107, 0.45);
+}
 
