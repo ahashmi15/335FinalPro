@@ -2,24 +2,21 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("oneTask.js loaded!");
   console.log("Initial seconds:", window.taskDurationSeconds);
 
+  /* ===============================
+     TIMER LOGIC (UNCHANGED)
+  =============================== */
   const timerDisplay = document.getElementById("timer");
   const modal = document.getElementById("timeUpModal");
   const addTimeBtn = document.getElementById("addTimeBtn");
+  const endNowBtn = document.getElementById("endNowBtn");
 
   if (!timerDisplay) {
     console.error("❌ ERROR: #timer element not found.");
     return;
   }
 
-  if (!modal) {
-    console.error("❌ ERROR: #timeUpModal missing.");
-  }
-
   let totalSeconds = window.taskDurationSeconds;
   let timerInterval = null;
-
-  // END NOW BUTTON — triggers modal instantly
-  const endNowBtn = document.getElementById("endNowBtn");
 
   if (endNowBtn) {
     endNowBtn.addEventListener("click", () => {
@@ -41,7 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (totalSeconds <= 0) {
       clearInterval(timerInterval);
-      timerDisplay.innerText = "✔️ Task Complete!";
       modal.classList.remove("hidden");
       return;
     }
@@ -49,33 +45,73 @@ document.addEventListener("DOMContentLoaded", () => {
     totalSeconds--;
   }
 
-  // Start timer
   updateTimer();
   timerInterval = setInterval(updateTimer, 1000);
 
-  // ---------------------------
-  // ADD EXTRA TIME
-  // ---------------------------
   if (addTimeBtn) {
     addTimeBtn.addEventListener("click", () => {
-      let extra = prompt("How many additional minutes?");
-      extra = parseInt(extra, 10);
-
-      if (isNaN(extra) || extra <= 0) {
-        alert("Invalid number.");
-        return;
-      }
+      let extra = parseInt(prompt("How many additional minutes?"), 10);
+      if (!extra || extra <= 0) return;
 
       totalSeconds += extra * 60;
-
       modal.classList.add("hidden");
 
-      // restart timer safely
       clearInterval(timerInterval);
       updateTimer();
       timerInterval = setInterval(updateTimer, 1000);
     });
   }
 
-  // Complete / Fail buttons are handled via form POSTs (server-side)
+  /* ===============================
+     OBJECTIVE INTERACTION LOGIC
+  =============================== */
+  const objectiveItems = Array.from(
+    document.querySelectorAll(".objective-item")
+  );
+  const currentObjectiveBox = document.getElementById("currentObjective");
+
+  let currentIndex = 0;
+
+  function setCurrentObjective(index) {
+    const item = objectiveItems[index];
+    if (!item || item.classList.contains("completed-objective")) return;
+
+    objectiveItems.forEach(el =>
+      el.classList.remove("current-objective")
+    );
+
+    item.classList.add("current-objective");
+    currentObjectiveBox.innerText = item.innerText;
+    currentIndex = index;
+  }
+
+  // Initialize first objective
+  if (objectiveItems.length > 0) {
+    setCurrentObjective(0);
+  }
+
+  objectiveItems.forEach((item, index) => {
+    /* CLICK → SELECT OBJECTIVE */
+    item.addEventListener("click", () => {
+      setCurrentObjective(index);
+    });
+
+    /* DOUBLE CLICK → COMPLETE + AUTO ADVANCE */
+    item.addEventListener("dblclick", () => {
+      item.classList.add("completed-objective");
+      item.classList.remove("current-objective");
+
+      // Find next incomplete objective
+      const nextIndex = objectiveItems.findIndex(
+        (el, i) => i > index && !el.classList.contains("completed-objective")
+      );
+
+      if (nextIndex !== -1) {
+        setCurrentObjective(nextIndex);
+      } else {
+        // No objectives left — freeze current text
+        currentObjectiveBox.innerText = "All Objectives Completed";
+      }
+    });
+  });
 });

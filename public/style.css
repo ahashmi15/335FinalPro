@@ -265,19 +265,32 @@
     gap: 10px;
 }
 
-.objective-item {
-    color:#000000;
-    padding: 10px;
-    border: 2px solid #aaa;
-    border-radius: 8px;
-}
 
 .current-objective {
-    color: #000;
-    border-color: green;
-    font-weight: bold;
-    background-color: #eaffea;
+  padding: 12px 14px;
+  border-radius: 12px;
+
+  /* keep the glass look */
+  background: rgba(255,255,255,0.10);
+
+  /* gradient outline */
+  border: 2px solid transparent;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.10), rgba(255,255,255,0.10)),
+    linear-gradient(90deg, #ff2d55, #7c3aed, #00d4ff);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+
+  /* text styling */
+  font-weight: 800;
+
+  /* subtle glow */
+  box-shadow: 0 0 18px rgba(255, 45, 85, 0.35);
+
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
 }
+
+
 
 /* Center column */
 .center-box {
@@ -1051,5 +1064,42 @@
 .focus-popup-add:hover {
   background: rgba(255, 216, 107, 0.28);
   box-shadow: 0 0 18px rgba(255, 216, 107, 0.45);
+}
+
+
+/* COMPLETED OBJECTIVE */
+.completed-objective {
+  text-decoration: line-through;
+  opacity: 0.45;
+  transition: opacity 0.25s ease;
+}
+
+
+.objective-item {
+  padding: 12px 14px;
+  border-radius: 10px;
+
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+
+  font-weight: 600;
+  cursor: pointer;
+
+  /* Apple-style gradient text */
+  background-image: linear-gradient(90deg, #ff2d55, #7c3aed, #00d4ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    opacity 0.2s ease;
+}
+
+
+.current-objective:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 26px rgba(124, 58, 237, 0.45);
 }
 

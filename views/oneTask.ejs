@@ -20,11 +20,11 @@
         <div class="left-box focus-box">
             <h2 class="focus-heading">Objectives</h2>
             <div class="objectives-list">
-                <% task.objectives.forEach((obj, index) => { %>
-                    <div class="objective-item <%= index === 0 ? 'current-objective' : '' %>">
+                <% task.objectives.forEach((obj, index)=> { %>
+                    <div class="objective-item <%= index === 0 ? 'current-objective' : '' %>" data-index="<%= index %>">
                         <%= obj %>
                     </div>
-                <% }) %>
+                    <% }) %>
             </div>
         </div>
 
