@@ -16,8 +16,10 @@ const taskSchema = new mongoose.Schema({
     hours: { type: Number, required: true },
     minutes: { type: Number, required: true },
     objectives: [{ type: String }],
+    status: { type: String, default: "pending" }, // ← NEW FIELD
     createdAt: { type: Date, default: Date.now }
 });
+
 
 const Task = mongoose.model("Task", taskSchema);
 
@@ -127,6 +129,50 @@ app.get("/task/:id", async (req, res) => {
 
 
 });
+
+
+
+
+app.post("/task/:id/complete", async (req, res) => {
+    try {
+        const task = await Task.findByIdAndUpdate(
+            req.params.id,
+            { status: "completed" },
+            { new: true }
+        );
+
+        if (!task) return res.status(404).send("Task not found");
+
+        res.redirect(`/tasks/${task.date}`);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Server Error");
+    }
+});
+
+
+app.post("/task/:id/fail", async (req, res) => {
+    try {
+        const task = await Task.findByIdAndUpdate(
+            req.params.id,
+            { status: "failed" },
+            { new: true }
+        );
+
+        if (!task) return res.status(404).send("Task not found");
+
+        res.redirect(`/tasks/${task.date}`);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Server Error");
+    }
+});
+
+
+
+
+
+
 
 
 

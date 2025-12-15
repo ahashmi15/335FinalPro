@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/style.css">
-    <title>Today</title>
+    <title>Tasks for <%= date %></title>
 </head>
-
 
 <body>
 
@@ -13,13 +12,16 @@
 <hr>
 
 <div class="carousel">
+
     <% tasks.forEach(task => { %>
 
+        <!-- Entire card is clickable -->
         <a href="/task/<%= task._id %>" class="task-card">
 
             <h3><%= task.title %></h3>
 
-            <p><strong>Duration:</strong> 
+            <p>
+                <strong>Duration:</strong> 
                 <%= task.hours %>h 
                 <%= task.minutes %>m
             </p>
@@ -35,8 +37,8 @@
         </a>
 
     <% }) %>
-</div>
 
+</div>
 
 <a href="/list-days" class="back-btn">← Back to Days</a>
 

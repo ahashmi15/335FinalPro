@@ -24,18 +24,15 @@
         </div>
     </div>
 
-
     <!-- CENTER COLUMN -->
     <div class="center-box">
         <h2>Timer</h2>
         <div id="timer" class="timer-display"></div>
     </div>
 
-
     <!-- RIGHT COLUMN -->
     <div class="right-box">
         <h2>Current Objective</h2>
-
         <div id="currentObjective" class="current-text">
             <%= task.objectives[0] %>
         </div>
@@ -43,19 +40,41 @@
 
 </div>
 
-
 <!-- QUOTE API AREA -->
 <div id="quoteBox">Loading motivational quote...</div>
 
-
+<!-- Pass task duration to JS -->
 <script>
-    const hours = parseInt(`<%= task.hours %>`, 10);
-    const minutes = parseInt(`<%= task.minutes %>`, 10);
+    window.taskHours = Number("<%= task.hours %>");
+    window.taskMinutes = Number("<%= task.minutes %>");
 
-    window.taskDurationSeconds = (hours * 3600) + (minutes * 60);
+    window.taskDurationSeconds =
+        (window.taskHours * 3600) + (window.taskMinutes * 60);
 </script>
 
+
 <script src="/oneTask.js"></script>
+
+<!-- TIMER END POPUP -->
+<div id="timeUpModal" class="modal hidden">
+    <div class="modal-content">
+
+        <h2>Allotted Time Is Over</h2>
+
+        <form action="/task/<%= task._id %>/complete" method="POST">
+            <button type="submit" class="good-btn">Mark as Complete</button>
+        </form>
+
+        <form action="/task/<%= task._id %>/fail" method="POST">
+            <button type="submit" class="bad-btn">Move On (Fail)</button>
+        </form>
+
+        <button id="addTimeBtn" class="neutral-btn">
+            Add More Time
+        </button>
+
+    </div>
+</div>
 
 </body>
 </html>

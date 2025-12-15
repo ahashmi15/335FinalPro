@@ -1,36 +1,70 @@
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("oneTask.js loaded!");
+  console.log("Initial seconds:", window.taskDurationSeconds);
 
-    console.log("oneTask.js loaded!");
-    console.log("Initial seconds:", window.taskDurationSeconds);
+  const timerDisplay = document.getElementById("timer");
+  const modal = document.getElementById("timeUpModal");
+  const addTimeBtn = document.getElementById("addTimeBtn");
 
-    const timerDisplay = document.getElementById("timer");
+  if (!timerDisplay) {
+    console.error("❌ ERROR: #timer element not found.");
+    return;
+  }
 
-    if (!timerDisplay) {
-        console.error("❌ ERROR: #timer element not found in DOM.");
+  if (!modal) {
+    console.error("❌ ERROR: #timeUpModal missing.");
+  }
+
+  let totalSeconds = window.taskDurationSeconds;
+  let timerInterval = null;
+
+  function updateTimer() {
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    timerDisplay.innerText =
+      `${hours.toString().padStart(2, "0")}:` +
+      `${minutes.toString().padStart(2, "0")}:` +
+      `${seconds.toString().padStart(2, "0")}`;
+
+    if (totalSeconds <= 0) {
+      clearInterval(timerInterval);
+      timerDisplay.innerText = "✔️ Task Complete!";
+      modal.classList.remove("hidden");
+      return;
+    }
+
+    totalSeconds--;
+  }
+
+  // Start timer
+  updateTimer();
+  timerInterval = setInterval(updateTimer, 1000);
+
+  // ---------------------------
+  // ADD EXTRA TIME
+  // ---------------------------
+  if (addTimeBtn) {
+    addTimeBtn.addEventListener("click", () => {
+      let extra = prompt("How many additional minutes?");
+      extra = parseInt(extra, 10);
+
+      if (isNaN(extra) || extra <= 0) {
+        alert("Invalid number.");
         return;
-    }
+      }
 
-    let totalSeconds = window.taskDurationSeconds;
+      totalSeconds += extra * 60;
 
-    function updateTimer() {
-        const hours = Math.floor(totalSeconds / 3600);
-        const minutes = Math.floor((totalSeconds % 3600) / 60);
-        const seconds = totalSeconds % 60;
+      modal.classList.add("hidden");
 
-        timerDisplay.innerText =
-            `${hours.toString().padStart(2, '0')}:` +
-            `${minutes.toString().padStart(2, '0')}:` +
-            `${seconds.toString().padStart(2, '0')}`;
+      // restart timer safely
+      clearInterval(timerInterval);
+      updateTimer();
+      timerInterval = setInterval(updateTimer, 1000);
+    });
+  }
 
-        if (totalSeconds <= 0) {
-            clearInterval(timerInterval);
-            timerDisplay.innerText = "✔️ Task Complete!";
-        }
-
-        totalSeconds--;
-    }
-
-    updateTimer();
-    const timerInterval = setInterval(updateTimer, 1000);
-
+  // Complete / Fail buttons are handled via form POSTs (server-side)
 });
