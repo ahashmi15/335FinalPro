@@ -6,33 +6,34 @@
     <title>Your Days</title>
 </head>
 
+<body class="days-page">
 
-<body>
-    <h1>Your Days</h1>
-    <hr>
+    <div class="days-shell">
 
-    <% if (dates.length === 0) { %>
-        <p>No scheduled days yet. Add a task to begin.</p>
-    <% } else { %>
+        <h1 class="days-title">Your Days</h1>
+        <hr class="days-divider">
 
-        <div class="carousel">
-            <% dates.forEach(date => { %>
-                <a href="/tasks/<%= date %>">
-                    <div class="day-card"><%= date %></div>
-                </a>
-            <% }); %>
+        <% if (dates.length === 0) { %>
+            <p class="days-empty">No scheduled days yet. Add a task to begin.</p>
+        <% } else { %>
+
+            <div class="carousel days-carousel">
+                <% dates.forEach(date => { %>
+                    <a href="/tasks/<%= date %>" class="day-link">
+                        <div class="day-card glowing-border">
+                            <span class="day-text"><%= date %></span>
+                        </div>
+                    </a>
+                <% }); %>
+            </div>
+
+        <% } %>
+
+        <div class="days-bottom">
+            <a class="days-add-btn" href="/">← Add Another Task</a>
         </div>
 
-    <% } %>
-
-    <a class="back-btn" href="/">← Add Another Task</a>
-
-
+    </div>
 
 </body>
-
-
-
-
-
 </html>

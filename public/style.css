@@ -1,3 +1,180 @@
+/* Google Font (meets requirement) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+:root{
+  --bg1:#0b0b12;
+  --bg2:#141426;
+  --card: rgba(255,255,255,0.06);
+  --card2: rgba(255,255,255,0.04);
+  --stroke: rgba(255,255,255,0.10);
+  --text: rgba(255,255,255,0.92);
+  --muted: rgba(255,255,255,0.65);
+
+  /* Apple Music-ish accent gradient */
+  --accent1:#ff2d55; /* pink-red */
+  --accent2:#7c3aed; /* purple */
+  --accent3:#00d4ff; /* cyan */
+}
+
+.hidden { display: none; }
+
+.am-body{
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  margin:0;
+  min-height:100vh;
+  color: var(--text);
+  background:
+    radial-gradient(900px 500px at 15% 10%, rgba(255,45,85,0.18), transparent 60%),
+    radial-gradient(900px 500px at 85% 20%, rgba(124,58,237,0.20), transparent 55%),
+    radial-gradient(900px 500px at 55% 90%, rgba(0,212,255,0.10), transparent 60%),
+    linear-gradient(160deg, var(--bg1), var(--bg2));
+  padding: 28px 16px;
+}
+
+.am-shell{
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.am-header{
+  margin: 10px 0 22px 0;
+}
+
+.am-title{
+  margin:0;
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.am-subtitle{
+  margin: 8px 0 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.am-form{
+  margin-top: 18px;
+}
+
+.am-card{
+  border: 1px solid var(--stroke);
+  background: var(--card);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 14px 50px rgba(0,0,0,0.35);
+  backdrop-filter: blur(10px);
+}
+
+.am-card-inner{
+  background: var(--card2);
+  margin-bottom: 16px;
+}
+
+.am-h2{
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.am-label{
+  display:block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.am-input{
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(0,0,0,0.35);
+  color: var(--text);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+}
+
+.am-input::placeholder{
+  color: rgba(255,255,255,0.38);
+}
+
+.am-input:focus{
+  border-color: rgba(255,45,85,0.55);
+  box-shadow: 0 0 0 4px rgba(255,45,85,0.12);
+  transform: translateY(-1px);
+}
+
+.am-row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 10px 0 14px 0;
+}
+
+@media (max-width: 700px){
+  .am-row{ grid-template-columns: 1fr; }
+}
+
+.am-field{
+  display:flex;
+  flex-direction: column;
+}
+
+.am-stack{
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.am-actions{
+  display:flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.am-btn{
+  border: 1px solid transparent;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+
+.am-btn:active{
+  transform: scale(0.98);
+}
+
+.am-btn-primary{
+  color: white;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  box-shadow: 0 12px 30px rgba(255,45,85,0.18);
+}
+
+.am-btn-primary:hover{
+  box-shadow: 0 16px 40px rgba(124,58,237,0.22);
+}
+
+.am-btn-ghost{
+  margin-top: 10px;
+  color: var(--text);
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.12);
+}
+
+.am-btn-ghost:hover{
+  opacity: 0.92;
+}
+
+
 .hidden {
   display: none;
   opacity: 0.5; /* greyed-out look */
@@ -241,4 +418,267 @@
 
 .end-now-btn:hover {
     background: #ffcc3a;
+}
+
+
+
+/* -----------------------------
+   LIST DAYS – APPLE MUSIC VIBE
+------------------------------ */
+
+.page-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+.soft-divider {
+    border: none;
+    height: 1px;
+    width: 60%;
+    margin: 20px auto 40px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.4),
+        transparent
+    );
+}
+
+.empty-text {
+    text-align: center;
+    color: #aaa;
+    font-size: 1.1rem;
+}
+
+/* Carousel container */
+.days-carousel {
+    display: flex;
+    gap: 24px;
+    padding: 20px;
+    overflow-x: auto;
+    justify-content: center;
+}
+
+/* Remove underline from links */
+.day-link {
+    text-decoration: none;
+}
+
+/* Day card */
+.day-card {
+    min-width: 180px;
+    padding: 28px 36px;
+    border-radius: 18px;
+    background: rgba(25, 25, 30, 0.85);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover expand effect */
+.day-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 80, 200, 0.35);
+}
+
+/* Day text */
+.day-text {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* -----------------------------
+   GLOWING GRADIENT BORDER
+------------------------------ */
+
+.glowing-border::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 20px;
+    background: linear-gradient(
+        270deg,
+        #ff4ecd,
+        #6c63ff,
+        #00e5ff,
+        #ff4ecd
+    );
+    background-size: 400% 400%;
+    z-index: -1;
+    animation: gradientShift 10s linear infinite;
+    filter: blur(8px);
+    opacity: 0.8;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+/* =============================
+   LIST DAYS PAGE OVERRIDES
+   (NEW CLASSES ONLY)
+============================= */
+
+.days-page {
+  /* match your index page vibe */
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: radial-gradient(1200px 600px at 20% 10%, rgba(255, 80, 200, 0.25), transparent 60%),
+              radial-gradient(900px 500px at 80% 20%, rgba(0, 229, 255, 0.18), transparent 55%),
+              radial-gradient(1000px 700px at 50% 90%, rgba(108, 99, 255, 0.18), transparent 60%),
+              #07070c;
+  color: #fff;
+}
+
+.days-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 18px 40px;
+}
+
+.days-title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+}
+
+.days-divider {
+  border: none;
+  height: 1px;
+  width: min(620px, 70%);
+  margin: 18px auto 34px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+}
+
+.days-empty {
+  text-align: center;
+  color: rgba(255,255,255,0.72);
+  font-size: 1.1rem;
+  margin-top: 18px;
+}
+
+/* Center the button under the carousel */
+.days-bottom {
+  display: flex;
+  justify-content: center;
+  margin-top: 26px; /* “not too under” */
+}
+
+.days-add-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+
+  color: #ffffff;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(10px);
+
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+}
+
+.days-add-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.12);
+  box-shadow: 0 0 24px rgba(255, 80, 200, 0.22);
+}
+
+
+
+
+
+/* =============================
+   ZOOM ON DAY PAGE (NEW ONLY)
+============================= */
+
+.day-page {
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: radial-gradient(1200px 600px at 20% 10%, rgba(255, 80, 200, 0.25), transparent 60%),
+              radial-gradient(900px 500px at 80% 20%, rgba(0, 229, 255, 0.18), transparent 55%),
+              radial-gradient(1000px 700px at 50% 90%, rgba(108, 99, 255, 0.18), transparent 60%),
+              #07070c;
+  color: #fff;
+}
+
+.day-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 18px 40px;
+}
+
+.day-title {
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+}
+
+.day-divider {
+  border: none;
+  height: 1px;
+  width: min(720px, 75%);
+  margin: 18px auto 34px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+}
+
+/* Center-out population */
+.day-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  justify-content: center;      /* keeps the grid centered */
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;               /* centers the whole block */
+}
+
+/* Bottom centered button */
+.day-bottom {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.day-back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+
+  color: #ffffff;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(10px);
+
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+}
+
+.day-back-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.12);
+  box-shadow: 0 0 24px rgba(0, 229, 255, 0.18);
 }

@@ -1,96 +1,89 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="/style.css">
-    <title>Task Move</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css">
+  <title>Task Move</title>
 </head>
 
-<body>
-    <h1>LET'S GET THINGS DONE</h1>
+<body class="am-body">
 
-    <form action="/load-tasks" method="POST">
+  <div class="am-shell">
+    <header class="am-header">
+      <h1 class="am-title">LET'S GET THINGS DONE</h1>
+      <p class="am-subtitle">Plan your day. Lock in. Execute.</p>
+    </header>
 
-        
-    <fieldset>
-            
-        <fieldset>
-        <h2>What is your Objective?</h2>
+    <form class="am-form" action="/load-tasks" method="POST">
 
-        <!-- Objective 1 (required) -->
-        <input type="text" id="obj1" name="obj1" required>
+      <fieldset class="am-card">
 
-        <!-- Hidden extra objectives -->
-        <div id="extraObjectives">
+        <fieldset class="am-card am-card-inner">
+          <h2 class="am-h2">What are your Objective(s)?</h2>
 
-            <input type="text" id="obj2" name="obj2" placeholder="Additional objective" class="hidden">
-            <input type="text" id="obj3" name="obj3" placeholder="Additional objective" class="hidden">
-            <input type="text" id="obj4" name="obj4" placeholder="Additional objective" class="hidden">
-            <input type="text" id="obj5" name="obj5" placeholder="Additional objective" class="hidden">
-            <input type="text" id="obj6" name="obj6" placeholder="Additional objective" class="hidden">
-            <input type="text" id="obj7" name="obj7" placeholder="Additional objective" class="hidden">
-            <input type="text" id="obj8" name="obj8" placeholder="Additional objective" class="hidden">
-            <input type="text" id="obj9" name="obj9" placeholder="Additional objective" class="hidden">
-            <input type="text" id="obj10" name="obj10" placeholder="Additional objective" class="hidden">
+          <!-- Objective 1 (required) -->
+          <input class="am-input" type="text" id="obj1" name="obj1" required placeholder="Main objective">
 
+          <!-- Hidden extra objectives -->
+          <div id="extraObjectives" class="am-stack">
+            <input class="am-input hidden" type="text" id="obj2" name="obj2" placeholder="Additional objective">
+            <input class="am-input hidden" type="text" id="obj3" name="obj3" placeholder="Additional objective">
+            <input class="am-input hidden" type="text" id="obj4" name="obj4" placeholder="Additional objective">
+            <input class="am-input hidden" type="text" id="obj5" name="obj5" placeholder="Additional objective">
+            <input class="am-input hidden" type="text" id="obj6" name="obj6" placeholder="Additional objective">
+            <input class="am-input hidden" type="text" id="obj7" name="obj7" placeholder="Additional objective">
+            <input class="am-input hidden" type="text" id="obj8" name="obj8" placeholder="Additional objective">
+            <input class="am-input hidden" type="text" id="obj9" name="obj9" placeholder="Additional objective">
+            <input class="am-input hidden" type="text" id="obj10" name="obj10" placeholder="Additional objective">
+          </div>
+
+          <button class="am-btn am-btn-ghost" type="button" id="addObjBtn">+ Add another objective</button>
+        </fieldset>
+
+        <h2 class="am-h2">How long do you plan on chasing your objective(s)?</h2>
+
+        <div class="am-row">
+          <div class="am-field">
+            <label class="am-label" for="hours">Hours</label>
+            <input class="am-input" type="number" id="hours" name="hours" min="0" max="24" required>
+          </div>
+
+          <div class="am-field">
+            <label class="am-label" for="minutes">Minutes</label>
+            <input class="am-input" type="number" id="minutes" name="minutes" min="0" max="59" required>
+          </div>
         </div>
 
-        <button type="button" id="addObjBtn">+ Add another objective</button>
-        </fieldset>
-            
-            
-            
-            
-            
-            
-            
-            
-        <h2>How long do you plan on chasing your objective?</h2>
+        <div class="am-row">
+          <div class="am-field">
+            <label class="am-label" for="date">Day</label>
+            <input class="am-input" type="text" id="date" name="date" placeholder="e.g., May 2nd, Mother's Day" required>
+          </div>
 
-        <label>Hours:</label>
-        <input type="number" id="hours" name="hours" min="0" max="24" required>
+          <div class="am-field">
+            <label class="am-label" for="title">Task Name</label>
+            <input class="am-input" type="text" id="title" name="title" placeholder="e.g., Saving the world" required>
+          </div>
+        </div>
 
-        <label>Minutes:</label>
-        <input type="number" id="minutes" name="minutes" min="0" max="59" required>
-            
-            
-            
-            
-            
-        <h2>What day do you want to schedule the chase for?</h2><input type="text" id="date" name="date">
-        <h2>Enter a name for this chase:</h2><input type="text" id="title" name="title">
-    </fieldset>
+        <div class="am-actions">
+          <button class="am-btn am-btn-primary" type="submit">Add Task</button>
+        </div>
 
-
-        <br>
-        <!-- Submit Button -->
-        <button type="submit">Add Task</button>
-    
+      </fieldset>
     </form>
+  </div>
 
-<script>
+  <script>
     document.getElementById("addObjBtn").addEventListener("click", function () {
-
-        // Get all hidden objective fields
-        const hiddenFields = document.querySelectorAll("#extraObjectives .hidden");
-
-        if (hiddenFields.length > 0) {
-            // Reveal the first hidden one
-            hiddenFields[0].classList.remove("hidden");
-        } else {
-            alert("You've reached the maximum number of objectives (10).");
-        }
+      const hiddenFields = document.querySelectorAll("#extraObjectives .hidden");
+      if (hiddenFields.length > 0) {
+        hiddenFields[0].classList.remove("hidden");
+      } else {
+        alert("You've reached the maximum number of objectives (10).");
+      }
     });
-</script>
-
+  </script>
 
 </body>
-
-
-
-
-
-
-
-
 </html>
