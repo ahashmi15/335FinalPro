@@ -6,42 +6,57 @@
     <title><%= task.title %></title>
 </head>
 
-<body>
+<body class="focus-page">
 
-<h1><%= task.title %></h1>
+<div class="focus-shell">
 
-<div class="task-container">
+    <!-- TITLE -->
+    <h1 class="focus-title"><%= task.title %></h1>
 
-    <!-- LEFT COLUMN -->
-    <div class="left-box">
-        <h2>Objectives</h2>
-        <div class="objectives-list">
-            <% task.objectives.forEach((obj, index) => { %>
-                <div class="objective-item <%= index === 0 ? 'current-objective' : '' %>">
-                    <%= obj %>
-                </div>
-            <% }) %>
+    <!-- MAIN CONTENT -->
+    <div class="task-container focus-container">
+
+        <!-- LEFT COLUMN -->
+        <div class="left-box focus-box">
+            <h2 class="focus-heading">Objectives</h2>
+            <div class="objectives-list">
+                <% task.objectives.forEach((obj, index) => { %>
+                    <div class="objective-item <%= index === 0 ? 'current-objective' : '' %>">
+                        <%= obj %>
+                    </div>
+                <% }) %>
+            </div>
         </div>
+
+        <!-- CENTER COLUMN -->
+        <div class="center-box focus-box focus-center">
+            <h2 class="focus-heading">Timer</h2>
+            <div id="timer" class="timer-display focus-timer"></div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="right-box focus-box">
+            <h2 class="focus-heading">Current Objective</h2>
+            <div id="currentObjective" class="current-text focus-current">
+                <%= task.objectives[0] %>
+            </div>
+        </div>
+
     </div>
 
-    <!-- CENTER COLUMN -->
-    <div class="center-box">
-        <h2>Timer</h2>
-        <div id="timer" class="timer-display"></div>
+    <!-- QUOTE -->
+    <div id="quoteBox" class="focus-quote">
+        Loading motivational quote...
     </div>
 
-    <!-- RIGHT COLUMN -->
-    <div class="right-box">
-        <h2>Current Objective</h2>
-        <div id="currentObjective" class="current-text">
-            <%= task.objectives[0] %>
-        </div>
+    <!-- END NOW BUTTON -->
+    <div class="focus-bottom">
+        <button id="endNowBtn" class="neutral-btn end-now-btn focus-end-btn">
+            End Now
+        </button>
     </div>
 
 </div>
-
-<!-- QUOTE API AREA -->
-<div id="quoteBox">Loading motivational quote...</div>
 
 <!-- Pass task duration to JS -->
 <script>
@@ -51,15 +66,6 @@
     window.taskDurationSeconds =
         (window.taskHours * 3600) + (window.taskMinutes * 60);
 </script>
-
-
-<!-- END NOW BUTTON -->
-<button id="endNowBtn" class="neutral-btn end-now-btn">
-    End Now
-</button>
-
-
-
 
 <script src="/oneTask.js"></script>
 
