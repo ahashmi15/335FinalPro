@@ -682,3 +682,135 @@
   background: rgba(255,255,255,0.12);
   box-shadow: 0 0 24px rgba(0, 229, 255, 0.18);
 }
+
+
+
+/* =============================
+   ZOOM ON DAY - TASK BOXES
+   (NEW CLASSES ONLY)
+============================= */
+
+.day-task-card {
+  /* fixed size */
+  width: 320px;
+  height: 240px;
+
+  /* layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  text-decoration: none; /* for <a> cards */
+  color: inherit;
+
+  border-radius: 18px;
+  padding: 18px 18px 16px;
+
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.16);
+  backdrop-filter: blur(10px);
+
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+}
+
+.day-task-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  background: rgba(255,255,255,0.085);
+  box-shadow: 0 0 28px rgba(255, 80, 200, 0.16);
+}
+
+.day-task-title {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+
+  /* keep title from making card height explode */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.day-task-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  margin-top: 4px;
+  padding-top: 10px;
+
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.day-task-time {
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.92);
+}
+
+.day-task-status {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.72);
+}
+
+.day-task-obj {
+  margin: 14px 0 0;
+  padding-left: 18px;
+  color: rgba(255,255,255,0.75);
+  font-size: 0.95rem;
+
+  /* keep objectives from stretching card */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+/* Ensure fixed-size cards stay centered nicely in the grid */
+.day-grid {
+  justify-items: center;
+}
+
+
+
+/* =============================
+   TASK STATUS COLORS (ZOOM DAY)
+============================= */
+
+/* COMPLETED TASK */
+.completed-task {
+  background: rgba(40, 180, 120, 0.18) !important;
+  border: 1px solid rgba(40, 180, 120, 0.55) !important;
+  box-shadow: 0 0 26px rgba(40, 180, 120, 0.25);
+  pointer-events: none;
+}
+
+.completed-task .day-task-title,
+.completed-task .day-task-time,
+.completed-task .day-task-status {
+  color: #9fffd1;
+  text-decoration: line-through;
+}
+
+/* FAILED TASK */
+.failed-task {
+  background: rgba(220, 60, 60, 0.18) !important;
+  border: 1px solid rgba(220, 60, 60, 0.55) !important;
+  box-shadow: 0 0 26px rgba(220, 60, 60, 0.25);
+  pointer-events: none;
+}
+
+.failed-task .day-task-title,
+.failed-task .day-task-time {
+  color: #ffb3b3;
+  text-decoration: line-through;
+}
+
+.failed-label {
+  color: #ff4d4d;
+  font-weight: 800;
+}

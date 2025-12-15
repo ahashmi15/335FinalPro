@@ -12,34 +12,39 @@
       <h1 class="day-title">Tasks for <%= date %></h1>
       <hr class="day-divider" />
 
-      <!-- TASKS GRID (center-out) -->
       <div class="day-grid">
         <% tasks.forEach(task => { %>
 
           <% if (task.status === "completed") { %>
-            <div class="task-card completed-task">
-              <h3><%= task.title %></h3>
-              <p>(Completed)</p>
+            <div class="task-card day-task-card completed-task">
+              <h3 class="day-task-title"><%= task.title %></h3>
+
+              <div class="day-task-meta">
+                <span class="day-task-time"><%= task.hours %>h <%= task.minutes %>m</span>
+                <span class="day-task-status">(Completed)</span>
+              </div>
             </div>
 
           <% } else if (task.status === "failed") { %>
-            <div class="task-card failed-task">
-              <h3><%= task.title %></h3>
-              <p class="failed-label">Failed</p>
+            <div class="task-card day-task-card failed-task">
+              <h3 class="day-task-title"><%= task.title %></h3>
+
+              <div class="day-task-meta">
+                <span class="day-task-time"><%= task.hours %>h <%= task.minutes %>m</span>
+                <span class="day-task-status failed-label">Failed</span>
+              </div>
             </div>
 
           <% } else { %>
-            <!-- Pending task = clickable -->
-            <a href="/task/<%= task._id %>" class="task-card">
-              <h3><%= task.title %></h3>
+            <a href="/task/<%= task._id %>" class="task-card day-task-card">
+              <h3 class="day-task-title"><%= task.title %></h3>
 
-              <p>
-                <strong>Duration:</strong>
-                <%= task.hours %>h <%= task.minutes %>m
-              </p>
+              <div class="day-task-meta">
+                <span class="day-task-time"><%= task.hours %>h <%= task.minutes %>m</span>
+              </div>
 
               <% if (task.objectives && task.objectives.length > 0) { %>
-                <ul>
+                <ul class="day-task-obj">
                   <% task.objectives.forEach(obj => { %>
                     <li><%= obj %></li>
                   <% }) %>
@@ -51,7 +56,6 @@
         <% }) %>
       </div>
 
-      <!-- CENTERED BOTTOM BUTTON -->
       <div class="day-bottom">
         <a href="/list-days" class="day-back-btn">← Back to Days</a>
       </div>
