@@ -226,3 +226,19 @@
     color: red;
     font-weight: bold;
 }
+
+
+
+.end-now-btn {
+    margin-top: 30px;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    background: #ffd86b;
+    color: black;
+    cursor: pointer;
+}
+
+.end-now-btn:hover {
+    background: #ffcc3a;
+}

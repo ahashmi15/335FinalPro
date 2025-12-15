@@ -18,6 +18,17 @@ document.addEventListener("DOMContentLoaded", () => {
   let totalSeconds = window.taskDurationSeconds;
   let timerInterval = null;
 
+  // END NOW BUTTON — triggers modal instantly
+  const endNowBtn = document.getElementById("endNowBtn");
+
+  if (endNowBtn) {
+    endNowBtn.addEventListener("click", () => {
+      clearInterval(timerInterval);
+      modal.classList.remove("hidden");
+      timerDisplay.innerText = "⏹️ Timer Stopped Early";
+    });
+  }
+
   function updateTimer() {
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
