@@ -204,3 +204,25 @@
     color: red;
     opacity: 0.6;
 }
+
+
+.completed-task {
+    background: #d3d3d3;
+    color: #555;
+    text-decoration: line-through;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.failed-task {
+    background: #ffe5e5;
+    color: #a80000;
+    text-decoration: line-through;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.failed-label {
+    color: red;
+    font-weight: bold;
+}

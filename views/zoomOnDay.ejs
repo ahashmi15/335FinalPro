@@ -1,46 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/style.css" />
     <title>Tasks for <%= date %></title>
-</head>
-
-<body>
-
-<h1>Tasks for <%= date %></h1>
-<hr>
-
-<div class="carousel">
-
-    <% tasks.forEach(task => { %>
-
-        <!-- Entire card is clickable -->
+  </head>
+  <body>
+    <h1>Tasks for <%= date %></h1>
+    <hr />
+    <div class="carousel">
+      <% tasks.forEach(task => { %>
+      <div class="carousel">
+        <% tasks.forEach(task => { %> <% if (task.status === "completed") { %>
+        <div class="task-card completed-task">
+          <h3><%= task.title %></h3>
+          <p>(Completed)</p>
+        </div>
+        <% } else if (task.status === "failed") { %>
+        <div class="task-card failed-task">
+          <h3><%= task.title %></h3>
+          <p class="failed-label">Failed</p>
+        </div>
+        <% } else { %>
+        <!-- Pending task = clickable -->
         <a href="/task/<%= task._id %>" class="task-card">
-
-            <h3><%= task.title %></h3>
-
-            <p>
-                <strong>Duration:</strong> 
-                <%= task.hours %>h 
-                <%= task.minutes %>m
-            </p>
-
-            <% if (task.objectives && task.objectives.length > 0) { %>
-                <ul>
-                    <% task.objectives.forEach(obj => { %>
-                        <li><%= obj %></li>
-                    <% }) %>
-                </ul>
-            <% } %>
-
+          <h3><%= task.title %></h3>
+          <p>
+            <strong>Duration:</strong> <%= task.hours %>h <%= task.minutes %>m
+          </p>
+          <% if (task.objectives && task.objectives.length > 0) { %>
+          <ul>
+            <% task.objectives.forEach(obj => { %>
+            <li><%= obj %></li>
+            <% }) %>
+          </ul>
+          <% } %>
         </a>
-
-    <% }) %>
-
-</div>
-
-<a href="/list-days" class="back-btn">← Back to Days</a>
-
-</body>
+        <% } %> <% }) %>
+      </div>
+      <% }) %>
+    </div>
+    <a href="/list-days" class="back-btn">← Back to Days</a>
+  </body>
 </html>
