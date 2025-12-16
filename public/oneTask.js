@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const endNowBtn = document.getElementById("endNowBtn");
 
   if (!timerDisplay) {
-    console.error("❌ ERROR: #timer element not found.");
+    console.error("ERROR: #timer element not found.");
     return;
   }
 
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     endNowBtn.addEventListener("click", () => {
       clearInterval(timerInterval);
       modal.classList.remove("hidden");
-      timerDisplay.innerText = "⏹️ Timer Stopped Early";
+      timerDisplay.innerText = "-";
     });
   }
 
