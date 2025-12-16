@@ -2,9 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("oneTask.js loaded!");
   console.log("Initial seconds:", window.taskDurationSeconds);
 
-  /* ===============================
-     TIMER LOGIC (UNCHANGED)
-  =============================== */
   const timerDisplay = document.getElementById("timer");
   const modal = document.getElementById("timeUpModal");
   const addTimeBtn = document.getElementById("addTimeBtn");
@@ -62,9 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ===============================
-     OBJECTIVE INTERACTION LOGIC
-  =============================== */
   const objectiveItems = Array.from(
     document.querySelectorAll(".objective-item")
   );
@@ -85,23 +79,23 @@ document.addEventListener("DOMContentLoaded", () => {
     currentIndex = index;
   }
 
-  // Initialize first objective
+  
   if (objectiveItems.length > 0) {
     setCurrentObjective(0);
   }
 
   objectiveItems.forEach((item, index) => {
-    /* CLICK → SELECT OBJECTIVE */
+   
     item.addEventListener("click", () => {
       setCurrentObjective(index);
     });
 
-    /* DOUBLE CLICK → COMPLETE + AUTO ADVANCE */
+    
     item.addEventListener("dblclick", () => {
       item.classList.add("completed-objective");
       item.classList.remove("current-objective");
 
-      // Find next incomplete objective
+     
       const nextIndex = objectiveItems.findIndex(
         (el, i) => i > index && !el.classList.contains("completed-objective")
       );
@@ -109,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (nextIndex !== -1) {
         setCurrentObjective(nextIndex);
       } else {
-        // No objectives left — freeze current text
+        
         currentObjectiveBox.innerText = "All Objectives Completed";
       }
     });

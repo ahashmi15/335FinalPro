@@ -3,12 +3,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 
-// -------------------
-// MONGOOSE SETUP
-// -------------------
 mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log("✅ MongoDB Connected"))
-    .catch(err => console.error("❌ MongoDB Connection Error:", err));
+    .then(() => console.log("MongoDB Connected"))
+    .catch(err => console.error("MongoDB Connection Error:", err));
 
 const taskSchema = new mongoose.Schema({
     title: { type: String, required: true },
@@ -16,7 +13,7 @@ const taskSchema = new mongoose.Schema({
     hours: { type: Number, required: true },
     minutes: { type: Number, required: true },
     objectives: [{ type: String }],
-    status: { type: String, default: "pending" }, // ← NEW FIELD
+    status: { type: String, default: "pending" },
     createdAt: { type: Date, default: Date.now }
 });
 
@@ -24,29 +21,24 @@ const taskSchema = new mongoose.Schema({
 const Task = mongoose.model("Task", taskSchema);
 
 
-// Middleware
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-// View engine
+
 app.set("view engine", "ejs");
 
-// Home page
+
 app.get("/", (req, res) => {
     res.render("index");
 });
-
-
-
-
-
 
 
 app.post("/load-tasks", async (req, res) => {
     try {
         const { hours, minutes, date, title } = req.body;
 
-        // Gather objectives into array
+        
         const objectives = [];
         for (let i = 1; i <= 10; i++) {
             let val = req.body[`obj${i}`];
@@ -55,7 +47,7 @@ app.post("/load-tasks", async (req, res) => {
             }
         }
 
-        // Save task directly to DB
+        
         const newTask = new Task({
             title,
             date,
@@ -78,13 +70,11 @@ app.post("/load-tasks", async (req, res) => {
 });
 
 
-
 app.get("/list-days", async (req, res) => {
     try {
-        // Get all DISTINCT dates that have tasks
+        
         const dates = await Task.distinct("date");
 
-        // Sort dates alphabetically (we can enhance later)
         dates.sort();
 
         res.render("listDays", { dates });
@@ -94,9 +84,6 @@ app.get("/list-days", async (req, res) => {
         res.status(500).send("Error loading scheduled days.");
     }
 });
-
-
-
 
 
 app.get("/tasks/:date", async (req, res) => {
@@ -167,20 +154,6 @@ app.post("/task/:id/fail", async (req, res) => {
         res.status(500).send("Server Error");
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 app.listen(3000, () => {

@@ -1,4 +1,3 @@
-/* Google Font (meets requirement) */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
 :root{
@@ -10,10 +9,10 @@
   --text: rgba(255,255,255,0.92);
   --muted: rgba(255,255,255,0.65);
 
-  /* Apple Music-ish accent gradient */
-  --accent1:#ff2d55; /* pink-red */
-  --accent2:#7c3aed; /* purple */
-  --accent3:#00d4ff; /* cyan */
+  
+  --accent1:#ff2d55; 
+  --accent2:#7c3aed; 
+  --accent3:#00d4ff;
 }
 
 .hidden { display: none; }
@@ -177,10 +176,10 @@
 
 .hidden {
   display: none;
-  opacity: 0.5; /* greyed-out look */
+  opacity: 0.5; 
 }
 
-/* Inline for now; we can move to CSS later */
+
 .carousel {
   display: flex;
   overflow-x: auto;
@@ -245,7 +244,7 @@
 
 
 
-/* ------- FOCUS MODE (oneTask.ejs) ------- */
+
 
 .task-container {
     display: flex;
@@ -254,7 +253,7 @@
     gap: 20px;
 }
 
-/* Left column */
+
 .left-box {
     width: 30%;
 }
@@ -270,10 +269,10 @@
   padding: 12px 14px;
   border-radius: 12px;
 
-  /* keep the glass look */
+ 
   background: rgba(255,255,255,0.10);
 
-  /* gradient outline */
+  
   border: 2px solid transparent;
   background-image:
     linear-gradient(rgba(255,255,255,0.10), rgba(255,255,255,0.10)),
@@ -281,10 +280,10 @@
   background-origin: border-box;
   background-clip: padding-box, border-box;
 
-  /* text styling */
+  
   font-weight: 800;
 
-  /* subtle glow */
+ 
   box-shadow: 0 0 18px rgba(255, 45, 85, 0.35);
 
   transition: box-shadow 0.25s ease, transform 0.2s ease;
@@ -292,7 +291,7 @@
 
 
 
-/* Center column */
+
 .center-box {
     width: 30%;
     text-align: center;
@@ -304,7 +303,7 @@
     margin-top: 40px;
 }
 
-/* Right column */
+
 .right-box {
     width: 30%;
 }
@@ -318,7 +317,7 @@
     background: #f7f7f7;
 }
 
-/* Bottom quote */
+
 #quoteBox {
     margin-top: 40px;
     padding: 20px;
@@ -437,10 +436,6 @@
 
 
 
-/* -----------------------------
-   LIST DAYS – APPLE MUSIC VIBE
------------------------------- */
-
 .page-title {
     text-align: center;
     font-size: 3rem;
@@ -468,7 +463,7 @@
     font-size: 1.1rem;
 }
 
-/* Carousel container */
+
 .days-carousel {
     display: flex;
     gap: 24px;
@@ -477,12 +472,12 @@
     justify-content: center;
 }
 
-/* Remove underline from links */
+
 .day-link {
     text-decoration: none;
 }
 
-/* Day card */
+
 .day-card {
     min-width: 180px;
     padding: 28px 36px;
@@ -495,22 +490,19 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover expand effect */
+
 .day-card:hover {
     transform: scale(1.05);
     box-shadow: 0 0 30px rgba(255, 80, 200, 0.35);
 }
 
-/* Day text */
+
 .day-text {
     font-size: 1.3rem;
     font-weight: 600;
     color: #ffffff;
 }
 
-/* -----------------------------
-   GLOWING GRADIENT BORDER
------------------------------- */
 
 .glowing-border::before {
     content: "";
@@ -538,13 +530,8 @@
 }
 
 
-/* =============================
-   LIST DAYS PAGE OVERRIDES
-   (NEW CLASSES ONLY)
-============================= */
-
 .days-page {
-  /* match your index page vibe */
+  
   min-height: 100vh;
   margin: 0;
   font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -584,11 +571,11 @@
   margin-top: 18px;
 }
 
-/* Center the button under the carousel */
+
 .days-bottom {
   display: flex;
   justify-content: center;
-  margin-top: 26px; /* “not too under” */
+  margin-top: 26px;
 }
 
 .days-add-btn {
@@ -616,12 +603,6 @@
 }
 
 
-
-
-
-/* =============================
-   ZOOM ON DAY PAGE (NEW ONLY)
-============================= */
 
 .day-page {
   min-height: 100vh;
@@ -656,18 +637,18 @@
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
 }
 
-/* Center-out population */
+
 .day-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 22px;
-  justify-content: center;      /* keeps the grid centered */
+  justify-content: center;     
   align-items: start;
   max-width: 1100px;
-  margin: 0 auto;               /* centers the whole block */
+  margin: 0 auto;               
 }
 
-/* Bottom centered button */
+
 .day-bottom {
   display: flex;
   justify-content: center;
@@ -700,22 +681,18 @@
 
 
 
-/* =============================
-   ZOOM ON DAY - TASK BOXES
-   (NEW CLASSES ONLY)
-============================= */
 
 .day-task-card {
-  /* fixed size */
+ 
   width: 320px;
   height: 240px;
 
-  /* layout */
+  
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 
-  text-decoration: none; /* for <a> cards */
+  text-decoration: none; 
   color: inherit;
 
   border-radius: 18px;
@@ -741,7 +718,7 @@
   letter-spacing: -0.01em;
   line-height: 1.15;
 
-  /* keep title from making card height explode */
+ 
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -778,25 +755,21 @@
   color: rgba(255,255,255,0.75);
   font-size: 0.95rem;
 
-  /* keep objectives from stretching card */
+ 
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
 }
 
-/* Ensure fixed-size cards stay centered nicely in the grid */
+
 .day-grid {
   justify-items: center;
 }
 
 
 
-/* =============================
-   TASK STATUS COLORS (ZOOM DAY)
-============================= */
 
-/* COMPLETED TASK */
 .completed-task {
   background: rgba(40, 180, 120, 0.18) !important;
   border: 1px solid rgba(40, 180, 120, 0.55) !important;
@@ -811,7 +784,7 @@
   text-decoration: line-through;
 }
 
-/* FAILED TASK */
+
 .failed-task {
   background: rgba(220, 60, 60, 0.18) !important;
   border: 1px solid rgba(220, 60, 60, 0.55) !important;
@@ -833,9 +806,6 @@
 
 
 
-/* =============================
-   FOCUS / TIMER PAGE STYLES
-============================= */
 
 .focus-page {
   min-height: 100vh;
@@ -855,7 +825,7 @@
   padding: 48px 24px 40px;
 }
 
-/* TITLE */
+
 .focus-title {
   text-align: center;
   font-size: clamp(32px, 5vw, 52px);
@@ -869,7 +839,7 @@
   color: transparent;
 }
 
-/* CONTAINER */
+
 .focus-container {
   margin-bottom: 30px;
 }
@@ -882,7 +852,7 @@
   backdrop-filter: blur(10px);
 }
 
-/* HEADINGS */
+
 .focus-heading {
   margin-top: 0;
   margin-bottom: 14px;
@@ -891,7 +861,7 @@
   color: rgba(255,255,255,0.9);
 }
 
-/* TIMER */
+
 .focus-center {
   text-align: center;
 }
@@ -904,9 +874,9 @@
   color: #ffffff;
 }
 
-/* CURRENT OBJECTIVE – POP GRADIENT */
+
 .focus-current {
-  font-size: 2.75rem; /* ~15% bigger than before */
+  font-size: 2.75rem;
   font-weight: 800;
   line-height: 1.2;
 
@@ -934,7 +904,7 @@
 
 
 
-/* END BUTTON */
+
 .focus-bottom {
   display: flex;
   justify-content: center;
@@ -950,16 +920,16 @@
 
 
 .end-now-btn {
-  /* force compact size */
+  
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
   width: auto;
-  min-width: 140px;          /* compact, but readable */
-  padding: 8px 16px;         /* much smaller than before */
+  min-width: 140px;          
+  padding: 8px 16px;        
 
-  margin: 26px auto 0;       /* centered at bottom */
+  margin: 26px auto 0;       
 
   font-size: 0.95rem;
   font-weight: 700;
@@ -981,7 +951,7 @@
 
 .end-now-btn:hover {
   
-  transform: scale(1.07);    /* subtle zoom */
+  transform: scale(1.07);    
   background: rgba(226, 7, 7, 0.939);
   box-shadow: 0 0 18px rgba(255, 45, 85, 0.28);
 }
@@ -990,9 +960,7 @@
   transform: scale(0.96);
 }
 
-/* =============================
-   FOCUS POPUP – APP THEME
-============================= */
+
 
 .focus-modal-content {
   background: rgba(20, 20, 38, 0.95);
@@ -1018,7 +986,7 @@
   color: transparent;
 }
 
-/* Shared popup button base */
+
 .focus-popup-btn {
   width: 100%;
   padding: 10px 14px;
@@ -1043,31 +1011,31 @@
     color 0.18s ease;
 }
 
-/* Hover effects ONLY introduce color */
+
 .focus-popup-btn:hover {
   transform: scale(1.05);
 }
 
-/* GREEN on hover */
+
 .focus-popup-complete:hover {
   background: rgba(76, 175, 80, 0.25);
   box-shadow: 0 0 18px rgba(76, 175, 80, 0.45);
 }
 
-/* RED on hover */
+
 .focus-popup-fail:hover {
   background: rgba(231, 76, 60, 0.25);
   box-shadow: 0 0 18px rgba(231, 76, 60, 0.45);
 }
 
-/* YELLOW on hover */
+
 .focus-popup-add:hover {
   background: rgba(255, 216, 107, 0.28);
   box-shadow: 0 0 18px rgba(255, 216, 107, 0.45);
 }
 
 
-/* COMPLETED OBJECTIVE */
+
 .completed-objective {
   text-decoration: line-through;
   opacity: 0.45;
@@ -1085,7 +1053,7 @@
   font-weight: 600;
   cursor: pointer;
 
-  /* Apple-style gradient text */
+ 
   background-image: linear-gradient(90deg, #ff2d55, #7c3aed, #00d4ff);
   -webkit-background-clip: text;
   background-clip: text;

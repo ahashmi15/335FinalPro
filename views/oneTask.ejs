@@ -10,13 +10,13 @@
 
 <div class="focus-shell">
 
-    <!-- TITLE -->
+   
     <h1 class="focus-title"><%= task.title %></h1>
 
-    <!-- MAIN CONTENT -->
+   
     <div class="task-container focus-container">
 
-        <!-- LEFT COLUMN -->
+        
         <div class="left-box focus-box">
             <h2 class="focus-heading">Objectives</h2>
             <div class="objectives-list">
@@ -28,13 +28,13 @@
             </div>
         </div>
 
-        <!-- CENTER COLUMN -->
+        
         <div class="center-box focus-box focus-center">
             <h2 class="focus-heading">Timer</h2>
             <div id="timer" class="timer-display focus-timer"></div>
         </div>
 
-        <!-- RIGHT COLUMN -->
+       
         <div class="right-box focus-box">
             <h2 class="focus-heading">Current Objective</h2>
             <div id="currentObjective" class="current-text focus-current">
@@ -44,12 +44,12 @@
 
     </div>
 
-    <!-- QUOTE -->
+   
     <div id="quoteBox" class="focus-quote">
         Loading motivational quote...
     </div>
 
-    <!-- END NOW BUTTON -->
+   
     <div class="focus-bottom">
         <button id="endNowBtn" class="neutral-btn end-now-btn focus-end-btn">
             End Now
@@ -58,7 +58,7 @@
 
 </div>
 
-<!-- Pass task duration to JS -->
+
 <script>
     window.taskHours = Number("<%= task.hours %>");
     window.taskMinutes = Number("<%= task.minutes %>");
@@ -69,7 +69,7 @@
 
 <script src="/oneTask.js"></script>
 
-<!-- TIMER END POPUP -->
+
 <div id="timeUpModal" class="modal hidden">
   <div class="focus-modal-content">
 
