@@ -59,43 +59,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const objectiveItems = Array.from(
-    document.querySelectorAll(".objective-item")
-  );
+  const objectiveItems = Array.from(document.querySelectorAll(".objective-item"));
   const currentObjectiveBox = document.getElementById("currentObjective");
-
-  let currentIndex = 0;
 
   function setCurrentObjective(index) {
     const item = objectiveItems[index];
     if (!item || item.classList.contains("completed-objective")) return;
 
-    objectiveItems.forEach(el =>
-      el.classList.remove("current-objective")
-    );
+    objectiveItems.forEach(el => el.classList.remove("current-objective"));
 
     item.classList.add("current-objective");
     currentObjectiveBox.innerText = item.innerText;
-    currentIndex = index;
   }
 
-  
   if (objectiveItems.length > 0) {
     setCurrentObjective(0);
   }
 
   objectiveItems.forEach((item, index) => {
-   
     item.addEventListener("click", () => {
       setCurrentObjective(index);
     });
 
-    
     item.addEventListener("dblclick", () => {
       item.classList.add("completed-objective");
       item.classList.remove("current-objective");
 
-     
       const nextIndex = objectiveItems.findIndex(
         (el, i) => i > index && !el.classList.contains("completed-objective")
       );
@@ -103,9 +92,25 @@ document.addEventListener("DOMContentLoaded", () => {
       if (nextIndex !== -1) {
         setCurrentObjective(nextIndex);
       } else {
-        
         currentObjectiveBox.innerText = "All Objectives Completed";
       }
     });
   });
+
+  
+  const quoteBox = document.getElementById("quoteBox");
+
+  if (quoteBox) {
+    fetch("/api/quote")
+      .then(res => res.json())
+      .then(data => {
+        quoteBox.innerText = data.author
+          ? `"${data.content}" — ${data.author}`
+          : data.content;
+      })
+      .catch(err => {
+        console.error("Quote API error:", err);
+        quoteBox.innerText = "Stay focused. Keep going.";
+      });
+  }
 });
